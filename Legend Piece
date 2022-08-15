@@ -1,0 +1,154 @@
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+local Window = Library.CreateLib("Legend Piece", "DarkTheme")
+local Tab = Window:NewTab("ONE")
+local Section = Tab:NewSection("")
+ Section:NewSlider("WlkSpeed", "16~500", 500, 16, function(s) 
+    game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = s
+    end)
+Section:NewToggle("inf money,Gem"  , "", function(state)
+    if state then
+_G.on = true
+
+while _G.on == true do
+
+local args = {
+    [1] = "Money",
+    [3] = -100000000,
+    [4] = -100000000
+}
+
+game:GetService("ReplicatedStorage").BMF:FireServer(unpack(args))
+wait()
+    end
+    else
+_G.on = false
+        
+    end
+end)
+
+Section:NewToggle("Fruit (LV.100+)"  , "", function(state)
+    if state then
+_G.on = true
+local args = {
+    [1] = "Money",
+    [3] = -10000,
+    [4] = -10000
+}
+
+game:GetService("ReplicatedStorage").BMF:FireServer(unpack(args))
+wait()
+while _G.on == true do
+local args = {
+    [1] = "Fruit",
+    [2] = "FruitDealer"
+}
+
+game:GetService("ReplicatedStorage").Remotes.NPC:FireServer(unpack(args))
+wait(0.24)
+game:GetService("Players").LocalPlayer.PlayerGui.FruitDealerGui.Frame.Gem.RemoteEvent:FireServer()
+local args = {
+    [1] = "Fruit",
+    [2] = "FruitDealer"
+}
+
+game:GetService("ReplicatedStorage").Remotes.NPC:FireServer(unpack(args))
+local args = {
+    [1] = "Fruit",
+    [2] = "FruitDealer"
+}
+
+game:GetService("ReplicatedStorage").Remotes.NPC:FireServer(unpack(args))
+
+    end
+    else
+_G.on = false
+        
+    end
+end)
+
+
+Section:NewButton("FREE Dragon Fruit", "ButtonInfo", function()
+    local args = {
+    [1] = "Money",
+    [2] = "Dragon",
+    [3] = 0,
+    [4] = 0
+}
+
+game:GetService("ReplicatedStorage").BMF:FireServer(unpack(args))
+end)
+
+Section:NewTextBox("FREE Fruit Get", "", function(txt)
+	local args = {
+    [1] = "Money",
+    [2] = "txt",
+    [3] = 0,
+    [4] = 0
+}
+
+game:GetService("ReplicatedStorage").BMF:FireServer(unpack(args))
+end)
+
+Section:NewButton("god mod", "", function()
+    local args = {
+    [1] = "TakeDamage",
+    [2] = {
+        ["target"] = game:GetService("Players").LocalPlayer.Character,
+        ["damage"] = 0/0 --[[NaN]]
+    }
+}
+
+game:GetService("ReplicatedStorage").Remotes.DamageRemoteEvent:FireServer(unpack(args))
+end)
+
+Section:NewTextBox("Hp", "", function(i)
+	local args = {
+    [1] = "TakeDamage",
+    [2] = {
+        ["target"] = game:GetService("Players").LocalPlayer.Character,
+        ["damage"] = -i
+    }
+}
+
+game:GetService("ReplicatedStorage").Remotes.DamageRemoteEvent:FireServer(unpack(args))
+end)
+
+Section:NewToggle("inf HITS(inf inCombat)"  , "", function(state)
+    if state then
+_G.on = true
+
+while _G.on == true do
+  
+local args = {
+    [1] = "TakeDamage",
+    [2] = {
+        ["target"] = game:GetService("Players").LocalPlayer.Character,
+        ["damage"] = -100 
+    }
+}
+
+game:GetService("ReplicatedStorage").Remotes.DamageRemoteEvent:FireServer(unpack(args))
+
+wait(0.2)
+    end
+    else
+_G.on = false
+        
+    end
+end)
+
+Section:NewToggle("INF KATANA"  , "", function(state)
+    if state then
+_G.on = true
+
+while _G.on == true do
+  
+game:GetService("Players").LocalPlayer.Character.Katana.Punch:FireServer()
+
+wait()
+    end
+    else
+_G.on = false
+        
+    end
+end)
